@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 /**
- * @fileoverview Unit tests for the delete exploration modal component.
+ * @fileoverview Unit Test for
+ *  MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent.
  */
 
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, waitForAsync, TestBed } from '@angular/core/testing';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DeleteExplorationModalComponent } from './delete-exploration-modal.component';
+import { MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent } from './mark-all-audio-and-translations-as-needing-update-modal.component';
 
 class MockActiveModal {
   close(): void {
@@ -31,29 +32,35 @@ class MockActiveModal {
   }
 }
 
-describe('Delete Exploration Modal Component', function() {
-  let component: DeleteExplorationModalComponent;
-  let fixture: ComponentFixture<DeleteExplorationModalComponent>;
+describe('Delete Exploration Modal Component works', function() {
+  let component: MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent;
+  let fixture: ComponentFixture<
+    MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
-        DeleteExplorationModalComponent
+        MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent
       ],
       providers: [{
         provide: NgbActiveModal,
         useClass: MockActiveModal
-      }]
+      }],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteExplorationModalComponent);
+    fixture = TestBed.createComponent(
+      MarkAllAudioAndTranslationsAsNeedingUpdateModalComponent);
     component = fixture.componentInstance;
 
     TestBed.inject(NgbActiveModal);
     fixture.detectChanges();
   });
+
+  // Confirm and cancel functions tested in ConfirmOrCancelModal spec file.
+  // So only Component is defined need to be tested in this file.
 
   it('should check whether component is initialized', () => {
     expect(component).toBeDefined();
