@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileoverview Backend Api Service for access validation.
+ * @fileoverview Bckend Api Service for access validation.
  */
 
 import { HttpClient } from '@angular/common/http';
