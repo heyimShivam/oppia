@@ -143,12 +143,13 @@ var ListEditor = function(elem) {
           .get(listLength - 1));
     }
   };
-  var deleteItem = async function(index) {
-    // Error.
-    debugger;
-    console.log('index ' + index);
-    var deleteItemFieldElem = await elem.all(deleteListEntryLocator).get(index);
 
+  var deleteItem = async function(index) {
+    var deleteItemField = await by
+      .repeater('item in localValue track by $index')
+      .row(index);
+    var deleteItemFieldElem = deleteItemField.element(
+      deleteListEntryLocator);
     await action.click('Delete Item Field Elem', deleteItemFieldElem);
   };
 
@@ -168,6 +169,7 @@ var ListEditor = function(elem) {
       var startingLength = await elem.all(by.id(
         'protractor-test-schema-based-list-editor-table-row')).all(
         by.tagName('td')).count();
+
       for (var i = startingLength; i < desiredLength; i++) {
         await addItem();
       }
