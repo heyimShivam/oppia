@@ -116,7 +116,6 @@ var GraphEditor = function(graphInputContainer) {
 };
 
 var ListEditor = function(elem) {
-  var deleteListEntryLocator = by.css('.protractor-test-delete-list-entry');
   var addListEntryLocator = by.css('.protractor-test-add-list-entry');
   // NOTE: this returns a promise, not an integer.
   var _getLength = async function() {
@@ -144,11 +143,10 @@ var ListEditor = function(elem) {
     }
   };
   var deleteItem = async function(index) {
-    var deleteItemField = await by
-      .repeater('item in localValue track by $index')
-      .row(index);
-    var deleteItemFieldElem = deleteItemField.element(
-      deleteListEntryLocator);
+    var deleteItemFieldElem = element(
+      by.css(`.protractor-test-delete-list-entry-${ 0 }`));
+
+    console.log(index + ' :index');
     await action.click('Delete Item Field Elem', deleteItemFieldElem);
   };
 

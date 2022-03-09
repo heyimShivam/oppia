@@ -44,7 +44,7 @@ describe('rich-text components', function() {
 
   it('should display correctly', async function() {
     await users.createAndLoginUser(
-      'user@richTextComponents.com', 'userRichTextComponents');
+      'user@rxyzichTextComponents.com', 'userRichTextComponents');
 
     await workflow.createExploration(true);
 

@@ -34,7 +34,7 @@
           </schema-based-editor>
         </td>
         <td *ngIf="!len && (!minListLength || localValue.length > minListLength) && localValue.length > 0" class="align-top">
-          <button class="oppia-delete-list-entry-button oppia-transition-200 protractor-test-delete-list-entry" type="button"
+          <button class="oppia-delete-list-entry-button oppia-transition-200 protractor-test-delete-list-entry-{{ idx }}" type="button"
                   (click)="deleteElement(idx)"
                   [disabled]="disabled">
             <i class="material-icons md-18">&#xE5CD;</i>
