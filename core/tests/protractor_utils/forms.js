@@ -143,7 +143,6 @@ var ListEditor = function(elem) {
           .get(listLength - 1));
     }
   };
-
   var deleteItem = async function(index) {
     var deleteItemField = await by
       .repeater('item in localValue track by $index')
@@ -169,7 +168,6 @@ var ListEditor = function(elem) {
       var startingLength = await elem.all(by.id(
         'protractor-test-schema-based-list-editor-table-row')).all(
         by.tagName('td')).count();
-
       for (var i = startingLength; i < desiredLength; i++) {
         await addItem();
       }
