@@ -519,7 +519,7 @@ export class CkEditor4RteComponent implements AfterViewInit, OnChanges,
   }
 
   ngOnDestroy(): void {
-    this.ck.destroy();
+    this.ck?.destroy();
     this.subscriptions.unsubscribe();
   }
 }
