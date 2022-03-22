@@ -271,9 +271,15 @@
         component: _pages_error_error_404_component__WEBPACK_IMPORTED_MODULE_3__["ErrorPage"]
       }, {
         path: 'terms',
-        component: _pages_error_error_404_component__WEBPACK_IMPORTED_MODULE_3__["ErrorPage"] // loadChildren: () => import('pages/terms-page/terms-page.module')
-        // .then(m => m.TermsPageModule)
-
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | pages-terms-page-terms-page-module */
+          "pages-terms-page-terms-page-module").then(__webpack_require__.bind(null,
+          /*! pages/terms-page/terms-page.module */
+          "sjS1")).then(function (m) {
+            return m.TermsPageModule;
+          });
+        }
       }, {
         path: '**',
         redirectTo: 'not-found'

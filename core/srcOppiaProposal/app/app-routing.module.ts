@@ -24,9 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'terms',
-    component: ErrorPage
-    // loadChildren: () => import('pages/terms-page/terms-page.module')
-      // .then(m => m.TermsPageModule)
+    loadChildren: () => import('pages/terms-page/terms-page.module')
+      .then(m => m.TermsPageModule)
   },
   {
     path: '**',
