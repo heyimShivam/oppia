@@ -63,4 +63,4 @@ dump.rdb
 ui-debug.log
 firebase-debug.log
 debug.log
-core/srcOppiaProposal/dist/**/*
+core/srcOppiaProposal/dist
