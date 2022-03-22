@@ -1,0 +1,111 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+      "oppia": {
+        "projectType": "application",
+        "schematics": {
+          "@schematics/angular:application": {
+            "strict": true
+          }
+        },
+        "root": "",
+        "sourceRoot": "./",
+        "prefix": "",
+        "architect": {
+          "build": {
+            "builder": "@angular-devkit/build-angular:browser",
+            "options": {
+              "outputPath": "core/srcOppiaProposal/dist/",
+              "index": "core/srcOppiaProposal/index.html",
+              "main": "core/srcOppiaProposal/main.ts",
+              "tsConfig": "tsconfig.json",
+              "aot": true,
+              "vendorChunk": true,
+              "assets": [
+                "./assets"
+              ],
+              "sourceMap": true,
+              "poll": 1000
+            },
+            "configurations": {
+              "production": {
+                "fileReplacements": [
+                  {
+                    "replace": "core/templates/pages/app-page/environments/environment.ts",
+                    "with": "core/templates/pages/app-page/environments/environment.prod.ts"
+                  }
+                ],
+                "optimization": {
+                  "scripts": true,
+                  "styles": true
+                },
+                "outputHashing": "all",
+                "sourceMap": false,
+                "namedChunks": false,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "styles" : [
+                "third_party/generated/css/third_party.css",
+                "core/templates/css/oppia.css",
+                "core/templates/css/oppia-material.css"
+                ],
+                "scripts": [
+                  "third_party/static/jquery-3.5.1/jquery.min.js",
+                  "third_party/static/jqueryui-1.12.1/jquery-ui.min.js",
+                  "third_party/static/jquery-ui-touch-punch-0.3.1/jquery.ui.touch-punch-improved.js",
+                  "third_party/ngx_generated/js/third_party.js"
+                ]
+              }
+            }
+          },
+          "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "browserTarget": "oppia:build"
+            },
+            "configurations": {
+              "production": {
+                "browserTarget": "oppia:build:production"
+              }
+            }
+          },
+          "lint": {
+            "builder": "@angular-eslint/builder:lint",
+            "options": {
+              "eslintConfig": ".eslintrc",
+              "cache": true,
+              "force": true,
+              "lintFilePatterns": [
+                "core/**/*.ts",
+                "core/**/*.spec.ts"
+              ],
+              "ignorePath": ".eslintignore"
+            }
+          },
+          "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "options": {
+              "main": "core/",
+              "tsConfig": "tsconfig.json",
+              "karmaConfig": "core/tests/karma.conf.ts"
+            }
+          },
+          "e2e": {
+            "builder": "@angular-devkit/build-angular:protractor",
+            "options": {
+              "protractorConfig": "core/tests/protractor.conf.js",
+              "devServerTarget": "oppia:serve"
+            },
+            "configurations": {
+              "production": {
+                "devServerTarget": "oppia:serve:production"
+              }
+            }
+          }
+      }
+    },
+    "defaultProject": "oppia"
+  }
+  }
