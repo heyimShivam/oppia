@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/oppia/oppia#readme",
   "devDependencies": {
+    "@angular-eslint/schematics": "4.2.1",
     "@angular-devkit/build-angular": "0.1102.14",
     "@angular-eslint/builder": "4.2.1",
     "@angular/cli": "11.2.14",
