@@ -26,6 +26,15 @@
             "assets": [
               "./assets"
             ],
+            "styles": [
+              "core/templates/css/oppia.css",
+              "core/templates/css/oppia-material.css"
+            ],
+            "scripts": [
+              "third_party/static/jquery-3.5.1/jquery.min.js",
+              "third_party/static/jqueryui-1.12.1/jquery-ui.min.js",
+              "third_party/static/jquery-ui-touch-punch-0.3.1/jquery.ui.touch-punch-improved.js"
+            ],
             "sourceMap": true,
             "poll": 1000
           },
@@ -33,8 +42,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "core/templates/pages/app-page/environments/environment.ts",
-                  "with": "core/templates/pages/app-page/environments/environment.prod.ts"
+                  "replace": "core/srcOppiaProposal/environments/environment.ts",
+                  "with": "core/srcOppiaProposal/environments/environment.prod.ts"
                 }
               ],
               "optimization": {
@@ -46,16 +55,7 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false
-            },
-            "styles": [
-              "core/templates/css/oppia.css",
-              "core/templates/css/oppia-material.css"
-            ],
-            "scripts": [
-              "third_party/static/jquery-3.5.1/jquery.min.js",
-              "third_party/static/jqueryui-1.12.1/jquery-ui.min.js",
-              "third_party/static/jquery-ui-touch-punch-0.3.1/jquery.ui.touch-punch-improved.js"
-            ]
+            }
           }
         },
         "serve": {
@@ -105,8 +105,5 @@
       }
     }
   },
-  "defaultProject": "oppia",
-  "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
-  }
+  "defaultProject": "oppia"
 }

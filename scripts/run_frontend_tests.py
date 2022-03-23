@@ -109,7 +109,7 @@ def main(args=None):
         '../karma_coverage_reports',
         'on your filesystem.',
         'Running test in development environment'])
-    
+    # ng test command.
     ANGULAR_CLI_FILE = os.path.join('node_modules', '@angular','cli', 'bin', 'ng')
     cmd = [
        common.NODE_BIN_PATH, '--max-old-space-size=4096', ANGULAR_CLI_FILE, 'test'
