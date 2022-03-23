@@ -109,11 +109,12 @@ def main(args=None):
         '../karma_coverage_reports',
         'on your filesystem.',
         'Running test in development environment'])
-
+    
+    ANGULAR_CLI_FILE = os.path.join('node_modules', '@angular','cli', 'bin', 'ng')
     cmd = [
-            common.NODE_BIN_PATH, '--max-old-space-size=4096',
-            os.path.join(common.NODE_MODULES_PATH, 'karma', 'bin', 'karma'),
-            'start', os.path.join('core', 'tests', 'karma.conf.ts')]
+       common.NODE_BIN_PATH, '--max-old-space-size=4096', ANGULAR_CLI_FILE, 'test'
+    ]
+
     if parsed_args.run_minified_tests:
         print('Running test in production environment')
 

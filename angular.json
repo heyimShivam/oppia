@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "core/srcOppiaProposal/dist/",
+            "outputPath": "./agnularCliBuild/dist/",
             "index": "core/srcOppiaProposal/index.html",
             "main": "core/srcOppiaProposal/main.ts",
             "tsConfig": "tsconfig.json",
