@@ -89,18 +89,6 @@
             "tsConfig": "tsconfig.json",
             "karmaConfig": "core/tests/karma.conf.ts"
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "core/tests/protractor.conf.js",
-            "devServerTarget": "oppia:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "oppia:serve:production"
-            }
-          }
         }
       }
     }
