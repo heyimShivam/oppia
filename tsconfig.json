@@ -50,6 +50,6 @@
   "exclude": [
     "core/tests",
     "extensions/classifiers/proto",
-    "core/srcOppiaProposal/dist/"
+    "./agnularCliBuild"
   ]
 }

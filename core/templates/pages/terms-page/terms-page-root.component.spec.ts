@@ -18,8 +18,6 @@
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { AppConstants } from 'app.constants';
-import { PageHeadService } from 'services/page-head.service';
 
 import { MockTranslatePipe } from 'tests/unit-test-utils';
 import { TermsPageRootComponent } from './terms-page-root.component';
@@ -27,7 +25,6 @@ import { TermsPageRootComponent } from './terms-page-root.component';
 describe('Terms Page Root', () => {
   let fixture: ComponentFixture<TermsPageRootComponent>;
   let component: TermsPageRootComponent;
-  let pageHeadService: PageHeadService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -36,7 +33,6 @@ describe('Terms Page Root', () => {
         MockTranslatePipe
       ],
       providers: [
-        PageHeadService
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
@@ -45,18 +41,10 @@ describe('Terms Page Root', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TermsPageRootComponent);
     component = fixture.componentInstance;
-    pageHeadService = TestBed.inject(PageHeadService);
   });
 
   it('should successfully instantiate the component',
     () => {
       expect(component).toBeDefined();
     });
-
-  it('should initialize', () => {
-    spyOn(pageHeadService, 'updateTitleAndMetaTags');
-    component.ngOnInit();
-    expect(pageHeadService.updateTitleAndMetaTags).toHaveBeenCalledWith(
-      AppConstants.PAGES_REGISTERED_WITH_FRONTEND.TERMS);
-  });
 });
