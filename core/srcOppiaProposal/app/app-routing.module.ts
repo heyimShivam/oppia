@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutFoundationPageComponent } from './pages/about-foundation-page/about-foundation-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { AnimationComponent } from './pages/animation-testing/animation';
 import { ErrorPage } from './pages/error/error-404.component';
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutPageComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'animation',
+    component: AnimationComponent,
     pathMatch: 'full'
   },
   {

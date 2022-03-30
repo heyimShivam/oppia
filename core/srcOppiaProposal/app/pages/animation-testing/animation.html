@@ -1,0 +1,34 @@
+<h1><h1 joyrideStep="animation0" [stepContent]="customContent0">Animation page step 0</h1></h1>
+
+<h1><h1 joyrideStep="animation1" [stepContent]="customContent1">Animation page step 1</h1></h1>
+
+<h1><h1 joyrideStep="animation2" [stepContent]="customContent2">Animation page step 2</h1></h1>
+
+<h1><h1 joyrideStep="animation3" [stepContent]="customContent3">Animation page step 3</h1></h1>
+
+<ng-template #customContent1>
+    #customContent1
+</ng-template>
+<ng-template #customContent2>
+    <h1>#customContent2</h1>
+</ng-template>
+<ng-template #customContent3>
+    #customContent3
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et quas quam! Omnis error ut sequi iusto voluptates, facere quaerat.</p>
+</ng-template>
+<ng-template #customContent0>
+    #customContent0
+</ng-template>
+<ng-template #button>
+    #customContent0
+</ng-template>
+
+
+<button joyrideStep="animationBtn" [stepContent]="button" class="btn btn-primary shivamBtn" (click)="start()">start animation again</button>
+
+<style>
+    .shivamBtn {
+        padding: 15px 20px;
+        margin: 25px;
+    }
+</style>
