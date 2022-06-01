@@ -17,7 +17,6 @@
  */
 
 import { ErrorPageComponent } from './error-page.component';
-import { SharedComponentsModule } from 'components/shared-component.module';
 import { ErrorPageRootComponent } from './error-page-root.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,7 +29,6 @@ import { toastrConfig } from 'pages/oppia-root/app.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    SharedComponentsModule,
     ToastrModule.forRoot(toastrConfig)
   ],
   declarations: [

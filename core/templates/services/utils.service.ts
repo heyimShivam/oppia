@@ -169,7 +169,3 @@ export class UtilsService {
     }
   }
 }
-
-angular.module('oppia').factory(
-  'UtilsService',
-  downgradeInjectable(UtilsService));

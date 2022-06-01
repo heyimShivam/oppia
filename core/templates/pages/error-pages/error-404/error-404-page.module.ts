@@ -17,14 +17,12 @@
  */
 
 import { NgModule } from '@angular/core';
-import { SharedComponentsModule } from 'components/shared-component.module';
 import { Error404PageRootComponent } from './error-404-page-root.component';
 import { Error404PageRoutingModule } from './error-404-page-routing.module';
 import { Error404PageComponent } from './error-404-page.component';
 
 @NgModule({
   imports: [
-    SharedComponentsModule,
     Error404PageRoutingModule
   ],
   declarations: [

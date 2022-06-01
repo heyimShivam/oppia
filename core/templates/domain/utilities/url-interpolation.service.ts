@@ -146,12 +146,6 @@ export class UrlInterpolationService {
 
     let nonStringParams = Object.entries(interpolationValues).filter(
       ([key, val]) => !this.utilsService.isString(val));
-    if (nonStringParams.length > 0) {
-      this.alertsService.fatalWarning(
-        'Every parameter passed into interpolateUrl must have string values, ' +
-        'but received: {' + nonStringParams.map(
-          ([key, val]) => key + ': ' + angular.toJson(val)).join(', ') + '}');
-    }
 
     let escapedInterpolationValues: Record<string, string> = {};
     for (let varName in interpolationValues) {
@@ -240,7 +234,3 @@ export class UrlInterpolationService {
     }
   }
 }
-
-angular.module('oppia').factory(
-  'UrlInterpolationService',
-  downgradeInjectable(UrlInterpolationService));

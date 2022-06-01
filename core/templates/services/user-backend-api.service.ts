@@ -150,6 +150,3 @@ export class UserBackendApiService {
     }).toPromise();
   }
 }
-angular.module('oppia').factory(
-  'UserBackendApiService',
-  downgradeInjectable(UserBackendApiService));

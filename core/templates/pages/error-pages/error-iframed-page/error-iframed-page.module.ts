@@ -22,7 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { RequestInterceptor } from 'services/request-interceptor.service';
-import { SharedComponentsModule } from 'components/shared-component.module';
 import { platformFeatureInitFactory, PlatformFeatureService } from
   'services/platform-feature.service';
 import { ErrorIframedPageRootComponent } from './error-iframed-root.component';
@@ -36,7 +35,6 @@ import { MyHammerConfig, toastrConfig } from 'pages/oppia-root/app.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedComponentsModule,
     ToastrModule.forRoot(toastrConfig)
   ],
   declarations: [

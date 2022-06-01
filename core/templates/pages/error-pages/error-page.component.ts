@@ -16,59 +16,15 @@
  * @fileoverview Component for the error page.
  */
 
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { downgradeComponent } from '@angular/upgrade/static';
-import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 
-import { UrlInterpolationService } from
-  'domain/utilities/url-interpolation.service';
-import { PageTitleService } from 'services/page-title.service';
 
 @Component({
   selector: 'error-page',
   templateUrl: './error-page.component.html',
   styleUrls: []
 })
-export class ErrorPageComponent implements OnInit, OnDestroy {
-  @Input() statusCode: string;
-  directiveSubscriptions = new Subscription();
+export class ErrorPageComponent {
   constructor(
-    private urlInterpolationService: UrlInterpolationService,
-    private pageTitleService: PageTitleService,
-    private translateService: TranslateService
   ) {}
-
-  ngOnInit(): void {
-    this.directiveSubscriptions.add(
-      this.translateService.onLangChange.subscribe(() => {
-        this.setPageTitle();
-      })
-    );
-  }
-
-  setPageTitle(): void {
-    let translatedTitle = this.translateService.instant(
-      'I18N_ERROR_PAGE_TITLE', {
-        statusCode: this.statusCode
-      }
-    );
-    this.pageTitleService.setDocumentTitle(translatedTitle);
-  }
-
-  getStaticImageUrl(imagePath: string): string {
-    return this.urlInterpolationService.getStaticImageUrl(imagePath);
-  }
-
-  getStatusCode(): number {
-    return Number(this.statusCode);
-  }
-
-  ngOnDestroy(): void {
-    this.directiveSubscriptions.unsubscribe();
-  }
 }
-
-angular.module('oppia').directive(
-  'errorPage', downgradeComponent(
-    {component: ErrorPageComponent}));

@@ -17,7 +17,6 @@
  */
 
 import { Component } from '@angular/core';
-import { downgradeComponent } from '@angular/upgrade/static';
 import { AppConstants } from 'app.constants';
 
 @Component({
@@ -34,5 +33,3 @@ export class TermsPageComponent {
   }
 }
 
-angular.module('oppia').directive(
-  'termsPage', downgradeComponent({component: TermsPageComponent}));

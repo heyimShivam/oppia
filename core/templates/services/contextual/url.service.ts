@@ -17,7 +17,6 @@
  * functions on $window to be mocked in unit tests.
  */
 
-import { downgradeInjectable } from '@angular/upgrade/static';
 import { Injectable } from '@angular/core';
 
 import constants from 'assets/constants';
@@ -405,6 +404,3 @@ export class UrlService {
     return null;
   }
 }
-
-angular.module('oppia').factory(
-  'UrlService', downgradeInjectable(UrlService));

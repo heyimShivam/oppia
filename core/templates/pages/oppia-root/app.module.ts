@@ -16,8 +16,8 @@
  * @fileoverview Module for the about page.
  */
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 
 // Modules.
@@ -28,14 +28,10 @@ import { AppRoutingModule } from './routing/app.routing.module';
 // Components.
 import { OppiaRootComponent } from './oppia-root.component';
 
-// Miscellaneous.
-import { platformFeatureInitFactory, PlatformFeatureService } from 'services/platform-feature.service';
-import { RequestInterceptor } from 'services/request-interceptor.service';
+
 import { CookieModule } from 'ngx-cookie';
 import { ToastrModule } from 'ngx-toastr';
-import { AngularFireAuth, AngularFireAuthModule, USE_EMULATOR } from '@angular/fire/auth';
-import { AngularFireModule } from '@angular/fire';
-import { AuthService } from 'services/auth.service';
+import { AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import * as hammer from 'hammerjs';
 
@@ -105,7 +101,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     BrowserAnimationsModule,
     CookieModule.forRoot(),
     HttpClientModule,
-    AngularFireModule.initializeApp(AuthService.firebaseConfig),
     AngularFireAuthModule,
     AppRoutingModule,
     ToastrModule.forRoot(toastrConfig)
@@ -118,21 +113,6 @@ export class MyHammerConfig extends HammerGestureConfig {
   ],
   providers: [
     AngularFireAuth,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: platformFeatureInitFactory,
-      deps: [PlatformFeatureService],
-      multi: true
-    },
-    {
-      provide: USE_EMULATOR,
-      useValue: AuthService.firebaseEmulatorConfig
-    },
     {
       provide: ErrorHandler,
       useClass: FirebaseErrorFilterHandler,

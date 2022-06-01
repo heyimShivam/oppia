@@ -17,7 +17,6 @@
  */
 
 import { NgModule } from '@angular/core';
-import { SharedComponentsModule } from 'components/shared-component.module';
 import { TermsPageComponent } from
   'pages/terms-page/terms-page.component';
 import { TermsPageRootComponent } from './terms-page-root.component';
@@ -27,7 +26,6 @@ import { TermsPageRoutingModule } from './terms-page-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    SharedComponentsModule,
     TermsPageRoutingModule
   ],
   declarations: [
