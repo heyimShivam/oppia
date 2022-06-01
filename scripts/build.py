@@ -15,7 +15,7 @@
 """Build file for production version of Oppia. Minifies JS and CSS."""
 
 from __future__ import annotations
-
+from distutils.dir_util import copy_tree
 import argparse
 import collections
 import fnmatch
@@ -686,6 +686,7 @@ def build_using_webpack(config_path: str) -> None:
         config_path=config_path, max_old_space_size=6144)
     with managed_webpack_compiler as p:
         p.wait()
+
     assert get_file_count('backend_prod_files/webpack_bundles/') > 0, (
         'webpack_bundles should be non-empty.')
 
@@ -1422,7 +1423,7 @@ def main(args: Optional[Sequence[str]] = None) -> None:
         generate_app_yaml(
             deploy_mode=options.deploy_mode)
         generate_build_directory(hashes)
-    
+
     save_hashes_to_file({})
 
 

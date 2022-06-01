@@ -501,7 +501,6 @@ def managed_webpack_compiler(
     with contextlib.ExitStack() as exit_stack:
         # OK to use shell=True here because we are passing string literals and
         # constants, so there is no risk of a shell-injection attack.
-        
 
         exit_stack.enter_context(angular_cli())
         proc = exit_stack.enter_context(managed_process(
