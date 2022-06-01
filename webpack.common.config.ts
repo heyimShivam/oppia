@@ -100,8 +100,6 @@ module.exports = {
       commonPrefix + '/pages/maintenance-page/maintenance-page.import.ts',
     moderator:
       commonPrefix + '/pages/moderator-page/moderator-page.import.ts',
-    oppia_root:
-      commonPrefix + '/pages/oppia-root/index.ts',
     practice_session:
       commonPrefix +
       '/pages/practice-session-page/practice-session-page.import.ts',
@@ -360,15 +358,6 @@ module.exports = {
       meta: defaultMeta,
       template:
         commonPrefix + '/pages/moderator-page/moderator-page.mainpage.html',
-      minify: htmlMinifyConfig,
-      inject: false
-    }),
-    new HtmlWebpackPlugin({
-      chunks: ['oppia_root'],
-      filename: 'oppia-root.mainpage.html',
-      meta: defaultMeta,
-      template:
-          commonPrefix + '/pages/oppia-root/oppia-root.mainpage.html',
       minify: htmlMinifyConfig,
       inject: false
     }),

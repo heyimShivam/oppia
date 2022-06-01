@@ -200,7 +200,7 @@
 
 
       var routes = [{
-        path: 'terms-page',
+        path: 'page',
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
           /*! import() | pages-terms-page-terms-page-module */

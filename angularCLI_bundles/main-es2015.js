@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
 // Otherwise pages will have false 404 status code.
 const routes = [
     {
-        path: 'terms-page',
+        path: 'page',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-terms-page-terms-page-module */ "pages-terms-page-terms-page-module").then(__webpack_require__.bind(null, /*! pages/terms-page/terms-page.module */ "sjS1"))
             .then(m => m.TermsPageModule)
     }

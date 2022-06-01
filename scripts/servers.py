@@ -367,6 +367,89 @@ def create_managed_web_browser(port):
     else:
         return None
 
+@contextlib.contextmanager
+def angular_cli(
+        config_path=None, use_prod_env=False, use_source_maps=False,
+        watch_mode=False, max_old_space_size=None):
+    """Returns context manager to start/stop the webpack compiler gracefully.
+
+    Args:
+        config_path: str|None. Path to an explicit webpack config, or None to
+            determine it from the other args.
+        use_prod_env: bool. Whether to compile for use in production. Only
+            respected if config_path is None.
+        use_source_maps: bool. Whether to compile with source maps. Only
+            respected if config_path is None.
+        watch_mode: bool. Run the compiler in watch mode, which rebuilds on file
+            change.
+        max_old_space_size: int|None. Sets the max memory size of the compiler's
+            "old memory" section. As memory consumption approaches the limit,
+            the compiler will spend more time on garbage collection in an effort
+            to free unused memory.
+
+    Yields:
+        psutil.Process. The Webpack compiler process.
+
+    Raises:
+        OSError. First build never completed.
+    """
+    if config_path is not None:
+        pass
+    elif use_prod_env:
+        config_path = (
+            common.WEBPACK_PROD_SOURCE_MAPS_CONFIG if use_source_maps else
+            common.WEBPACK_PROD_CONFIG)
+    else:
+        config_path = (
+            common.WEBPACK_DEV_SOURCE_MAPS_CONFIG if use_source_maps else
+            common.WEBPACK_DEV_CONFIG)
+
+    ANGULAR_CLI_FILE = os.path.join('node_modules', '@angular','cli', 'bin',     'ng')
+ 
+    compiler_args = [
+        common.NODE_BIN_PATH, '--max-old-space-size=4096', ANGULAR_CLI_FILE, 'build' , '--prod'
+       ]
+
+    if use_prod_env is True:
+       compiler_args = [
+        common.NODE_BIN_PATH, '--max-old-space-size=4096', ANGULAR_CLI_FILE, 'build' , '--prod'
+       ]
+    else:
+       compiler_args = [
+        common.NODE_BIN_PATH, '--max-old-space-size=4096', ANGULAR_CLI_FILE, 'build'
+       ]
+
+    with contextlib.ExitStack() as exit_stack:
+        # OK to use shell=True here because we are passing string literals and
+        # constants, so there is no risk of a shell-injection attack.
+        proc = exit_stack.enter_context(managed_process(
+            compiler_args, human_readable_name='Webpack Compiler', shell=True,
+            # Capture compiler's output to detect when builds have completed.
+            stdout=subprocess.PIPE))
+
+        # if watch_mode:
+        #     for line in iter(lambda: proc.stdout.readline() or None, None):
+        #         common.write_stdout_safe(line)
+        #         # Message printed when a compilation has succeeded. We break
+        #         # after the first one to ensure the site is ready to be visited.
+        #         if b'Built at: ' in line:
+        #             break
+        #     else:
+        #         # If none of the lines contained the string 'Built at',
+        #         # raise an error because a build hasn't finished successfully.
+        #         raise IOError('First build never completed')
+
+        def print_proc_output():
+            """Prints the proc's output until it is exhausted."""
+            for line in iter(lambda: proc.stdout.readline() or None, None):
+                common.write_stdout_safe(line)
+
+        # Start a thread to print the rest of the compiler's output to stdout.
+        printer_thread = threading.Thread(target=print_proc_output)
+        printer_thread.start()
+        exit_stack.callback(printer_thread.join)
+
+        yield proc
 
 @contextlib.contextmanager
 def managed_webpack_compiler(
@@ -418,6 +501,9 @@ def managed_webpack_compiler(
     with contextlib.ExitStack() as exit_stack:
         # OK to use shell=True here because we are passing string literals and
         # constants, so there is no risk of a shell-injection attack.
+        
+        # delete this 
+        # exit_stack.enter_context(angular_cli())
         proc = exit_stack.enter_context(managed_process(
             compiler_args, human_readable_name='Webpack Compiler', shell=True,
             # Capture compiler's output to detect when builds have completed.

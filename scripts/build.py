@@ -1422,7 +1422,7 @@ def main(args: Optional[Sequence[str]] = None) -> None:
         generate_app_yaml(
             deploy_mode=options.deploy_mode)
         generate_build_directory(hashes)
-
+    
     save_hashes_to_file({})
 
 
