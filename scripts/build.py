@@ -116,6 +116,7 @@ FILEPATHS_NOT_TO_RENAME = (
     '*.bundle.js',
     '*.bundle.js.map',
     'webpack_bundles/*',
+    'angularCLI_bundles/*',
 )
 
 # These are the env vars that need to be removed from app.yaml when we are

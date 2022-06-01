@@ -177,11 +177,6 @@ def main(args: Optional[Sequence[str]] = None) -> None:
             automatic_restart=not parsed_args.no_auto_restart,
             skip_sdk_update_check=True,
             port=PORT_NUMBER_FOR_GAE_SERVER))
-        
-        src = './angularCLI_bundles/webpack_bundles'
-        dist = './webpack_bundles/'
-        copy_tree(src, dist)
-        print('copying of')
 
         managed_web_browser = (
             None if parsed_args.no_browser else

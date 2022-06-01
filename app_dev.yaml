@@ -43,9 +43,20 @@ handlers:
   secure: always
 
 # DEVELOPMENT STATIC
+- url: /angularCLI_bundles
+  static_dir: angularCLI_bundles
+  secure: always
+  expiration: "0"
 - url: /webpack_bundles
   static_dir: webpack_bundles
   secure: always
+  expiration: "0"
+- url: /angularCLI_bundles/assets
+  static_dir: assets
+  secure: always
+  http_headers:
+    # This is replaced by a specific origin when doing a deployment.
+    Access-Control-Allow-Origin: "*"
   expiration: "0"
 - url: /assets
   static_dir: assets

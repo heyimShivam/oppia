@@ -101,6 +101,9 @@ RTE_EXTENSIONS_DEFINITIONS_PATH = (
 OBJECT_TEMPLATES_DIR = os.path.join('extensions', 'objects', 'templates')
 
 # Choose production templates folder when we are in production mode.
+ANGULAR_FRONTEND_TEMPLATES_DIR = (
+    os.path.join('angularCLI_bundles') if constants.DEV_MODE else
+    os.path.join('backend_prod_files', 'angularCLI_bundles'))
 FRONTEND_TEMPLATES_DIR = (
     os.path.join('webpack_bundles') if constants.DEV_MODE else
     os.path.join('backend_prod_files', 'webpack_bundles'))

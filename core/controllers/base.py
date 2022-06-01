@@ -68,7 +68,12 @@ def load_template(filename):
     Returns:
         str. The HTML file content.
     """
-    filepath = os.path.join(feconf.FRONTEND_TEMPLATES_DIR, filename)
+    print('filename: ', filename)
+    if (filename == 'oppia-root.mainpage.html'):
+      filepath = os.path.join(feconf.ANGULAR_FRONTEND_TEMPLATES_DIR, filename)
+    else:
+      filepath = os.path.join(feconf.FRONTEND_TEMPLATES_DIR, filename)
+    
     with utils.open_file(filepath, 'r') as f:
         html_text = f.read()
     return html_text
