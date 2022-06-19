@@ -19,7 +19,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import INTERACTION_SPECS from 'interactions/interaction_specs.json';
 import { TruncatePipe } from 'filters/string-utility-filters/truncate.pipe';
-import { CodeReplAnswer, PencilCodeEditorAnswer } from 'extensions/interactions/answer-defs';
+import { InteractionAnswer } from 'interactions/answer-defs';
 
 @Pipe({
   name: 'truncateInputBasedOnInteractionAnswerTypePipe'
@@ -31,15 +31,24 @@ export class TruncateInputBasedOnInteractionAnswerTypePipe
   ) { }
 
   transform(
-      input: CodeReplAnswer | PencilCodeEditorAnswer,
+      input: InteractionAnswer,
       interactionId: string, length: number): string {
     let answerType = INTERACTION_SPECS[interactionId].answer_type;
     let actualInputToTruncate = '';
+    let inputUpdate;
+
+    if (typeof (input) !== 'object') {
+      inputUpdate = {
+        code: input
+      };
+    } else {
+      inputUpdate = input;
+    }
 
     if (answerType === 'NormalizedString') {
-      actualInputToTruncate = input as unknown as string;
+      actualInputToTruncate = inputUpdate.code;
     } else if (answerType === 'CodeEvaluation') {
-      actualInputToTruncate = input.code;
+      actualInputToTruncate = inputUpdate.code;
     } else {
       throw new Error('Unknown interaction answer type');
     }
