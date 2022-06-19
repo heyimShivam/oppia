@@ -134,7 +134,6 @@ import { TestInteractionPanel } from 'pages/exploration-editor-page/editor-tab/t
 import { StringUtilityPipesModule } from 'filters/string-utility-filters/string-utility-pipes.module';
 import { SummarizeNonnegativeNumberPipe } from 'filters/summarize-nonnegative-number.pipe';
 
-
 // Services.
 import { AuthService } from 'services/auth.service';
 

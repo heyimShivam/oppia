@@ -277,4 +277,3 @@ angular.module('oppia').directive('trainingDataEditorPanel',
    downgradeComponent({
      component: TrainingDataEditorPanelComponent
    }) as angular.IDirectiveFactory);
-
