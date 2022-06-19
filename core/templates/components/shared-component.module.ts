@@ -128,7 +128,7 @@ import { StateInteractionEditorComponent } from './state-editor/state-interactio
 import { TrainingPanelComponent } from 'pages/exploration-editor-page/editor-tab/training-panel/training-panel.component';
 import { TrainingModalComponent } from 'pages/exploration-editor-page/editor-tab/training-panel/training-modal.component';
 import { TrainingDataEditorPanelComponent } from 'pages/exploration-editor-page/editor-tab/training-panel/training-data-editor-panel-modal.component';
-import { TestInteractionPanel } from 'pages/exploration-editor-page/editor-tab/test-interaction-panel/test-interaction-panel.component'; 
+import { TestInteractionPanel } from 'pages/exploration-editor-page/editor-tab/test-interaction-panel/test-interaction-panel.component';
 
 // Pipes.
 import { StringUtilityPipesModule } from 'filters/string-utility-filters/string-utility-pipes.module';
