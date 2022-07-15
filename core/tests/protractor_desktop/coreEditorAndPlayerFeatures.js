@@ -133,7 +133,7 @@ describe('Enable correctness feedback and set correctness', function() {
     await explorationEditorPage.navigateToMainTab();
     await explorationEditorMainTab.setStateName('First');
     await explorationEditorMainTab.setContent(await forms.toRichText(
-      'Select the right option.'));
+      'Select the right option.'), true);
 
     // Create interaction without closing the add response modal. Set
     // correctness in the modal.
