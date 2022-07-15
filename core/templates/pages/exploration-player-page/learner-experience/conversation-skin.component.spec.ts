@@ -82,7 +82,8 @@ class MockWindowRef {
       pathname: '/path/name',
       reload: () => {}
     },
-    onresize: null,
+    onresize: () => {
+    },
     addEventListener(event: string, callback) {
       callback({returnValue: null});
     },
@@ -388,6 +389,22 @@ describe('Conversation skin component', () => {
       objective: 'To learn',
       states: explorationDict.states
     },
+    exploration_metadata: {
+      title: 'Exploration',
+      category: 'Algebra',
+      objective: 'To learn',
+      language_code: 'en',
+      tags: [],
+      blurb: '',
+      author_notes: '',
+      states_schema_version: 50,
+      init_state_name: 'Introduction',
+      param_specs: {},
+      param_changes: [],
+      auto_tts_enabled: false,
+      correctness_feedback_enabled: true,
+      edits_allowed: true
+    },
     version: 2,
     can_edit: true,
     preferred_audio_language_code: 'en',
@@ -416,6 +433,22 @@ describe('Conversation skin component', () => {
       correctness_feedback_enabled: true,
       objective: 'To learn',
       states: explorationDict.states
+    },
+    exploration_metadata: {
+      title: 'Exploration',
+      category: 'Algebra',
+      objective: 'To learn',
+      language_code: 'en',
+      tags: [],
+      blurb: '',
+      author_notes: '',
+      states_schema_version: 50,
+      init_state_name: 'Introduction',
+      param_specs: {},
+      param_changes: [],
+      auto_tts_enabled: false,
+      correctness_feedback_enabled: true,
+      edits_allowed: true
     },
     version: 2,
     can_edit: true,
@@ -602,6 +635,7 @@ describe('Conversation skin component', () => {
     componentInstance.displayedCard = displayedCard;
 
     componentInstance.ngOnInit();
+    window.dispatchEvent(new Event('resize'));
 
     mockOnHintConsumed.emit();
     mockOnSolutionViewedEventEmitter.emit();
@@ -1085,13 +1119,6 @@ describe('Conversation skin component', () => {
 
     expect(componentInstance.getContentFocusLabel(index)).toEqual(
       ExplorationPlayerConstants.CONTENT_FOCUS_LABEL_PREFIX + index);
-  });
-
-  it('should tell if language is RTL', () => {
-    spyOn(i18nLanguageCodeService, 'isCurrentLanguageRTL')
-      .and.returnValue(true);
-
-    expect(componentInstance.isLanguageRTL()).toBeTrue();
   });
 
   it('should reload exploration', () => {
@@ -1759,5 +1786,16 @@ describe('Conversation skin component', () => {
     componentInstance.showProgressClearanceMessage = true;
 
     expect(componentInstance.isProgressClearanceMessageShown()).toBeTrue();
+  });
+
+  it('should update when submit button is enabled', () => {
+    componentInstance.submitButtonIsDisabled = false;
+    spyOn(componentInstance, 'isSubmitButtonDisabled').and.returnValue(
+      !componentInstance.submitButtonIsDisabled);
+
+    componentInstance.ngAfterViewChecked();
+
+    expect(componentInstance.submitButtonIsDisabled).toBeTrue();
+    expect(componentInstance.isSubmitButtonDisabled).toHaveBeenCalled();
   });
 });
