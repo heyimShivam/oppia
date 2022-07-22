@@ -811,10 +811,6 @@ describe('Questions List Component', () => {
       ShortSkillSummary.createFromBackendDict({
         skill_id: '1',
         skill_description: 'Skill Description'
-      }),
-      ShortSkillSummary.createFromBackendDict({
-        skill_id: '2',
-        skill_description: 'Skill Description'
       })
     ];
     spyOn(alertsService, 'addInfoMessage');
