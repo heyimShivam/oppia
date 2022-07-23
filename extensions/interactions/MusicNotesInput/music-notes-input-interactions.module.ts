@@ -17,19 +17,18 @@
  */
 
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { MaterialModule } from 'modules/material.module';
 import { MusicNotesInputComponent } from './directives/oppia-interactive-music-notes-input.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedPipesModule } from 'filters/shared-pipes.module';
 import { ResponseMusicNotesInput } from './directives/oppia-response-music-notes-input.component';
 import { ShortResponseMusicNotesInput } from './directives/oppia-short-response-music-notes-input.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     SharedPipesModule,
-    BrowserModule,
+    CommonModule,
     MaterialModule,
     TranslateModule
   ],

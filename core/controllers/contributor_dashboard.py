@@ -46,7 +46,7 @@ class ContributorDashboardPage(base.BaseHandler):
         # the CONTRIBUTOR_DASHBOARD_ENABLED flag is removed.
         if not config_domain.CONTRIBUTOR_DASHBOARD_IS_ENABLED.value:
             raise self.PageNotFoundException
-        self.render_template('contributor-dashboard-page.mainpage.html')
+        self.render_template('oppia-root.mainpage.html')
 
 
 class ContributionOpportunitiesHandler(base.BaseHandler):
