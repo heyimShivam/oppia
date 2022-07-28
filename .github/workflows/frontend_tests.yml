@@ -15,6 +15,9 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-18.04]
+        id: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      max-parallel: 20
+      fail-fast: false
     steps:
       - uses: actions/checkout@v2
       - name: Describe filesystem
@@ -43,17 +46,5 @@ jobs:
       - uses: ./.github/actions/install-oppia-dependencies
       - name: Suppress ENOSPC error from chokidar file watcher. See https://stackoverflow.com/a/32600959.
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - name: Run frontend tests
-        run: PYTHONIOENCODING=utf-8 python -m scripts.run_frontend_tests --run_minified_tests --skip_install --check_coverage
-      - name: Uploading fronted coverage reports as an artifact
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: frontend-coverage
-          path: /home/runner/work/oppia/karma_coverage_reports
-      - name: Report failure if failed on oppia/oppia develop branch
-        if: ${{ failure() && github.event_name == 'push' && github.repository == 'oppia/oppia' && github.ref == 'refs/heads/develop'}}
-        uses: ./.github/actions/send-webhook-notification
-        with:
-          message: "A frontend test failed on the upstream develop branch."
-          webhook-url: ${{ secrets.BUILD_FAILURE_ROOM_WEBHOOK_URL }}
+      - name: Run frontend tests ${{ matrix.id }}
+        run: PYTHONIOENCODING=utf-8 python -m scripts.run_frontend_tests --run_minified_tests --skip_install --check_coverage --verbose
