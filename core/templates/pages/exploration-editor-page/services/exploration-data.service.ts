@@ -152,6 +152,16 @@ export class ExplorationDataService {
             this.loggerService.info(JSON.stringify(response));
             this.draftChangeListId = response.draft_change_list_id;
             this.data = response;
+            this.data.param_changes = [
+              {
+                name: 'ParamChange',
+                generator_id: 'RandomSelector',
+                customization_args: {
+                  list_of_values: ['3', '4'],
+                  parse_with_jinja: true
+                }
+              }
+            ];
             const draft = this.localStorageService.getExplorationDraft(
               this.explorationId);
             if (draft) {

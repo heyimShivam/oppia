@@ -21,18 +21,28 @@ import 'zone.js';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { InteractionDisplayComponent } from './interaction-display.component';
+import { CopierComponent, OppiaValueGenerator, RandomSelectorComponent } from 'pages/exploration-editor-page/param-changes-editor/value-generator-editor.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    InteractionDisplayComponent
+    InteractionDisplayComponent,
+    OppiaValueGenerator,
+    RandomSelectorComponent,
+    CopierComponent
   ],
   entryComponents: [
+    OppiaValueGenerator,
+    RandomSelectorComponent,
+    CopierComponent
   ],
   exports: [
-    InteractionDisplayComponent
+    InteractionDisplayComponent,
+    OppiaValueGenerator,
+    RandomSelectorComponent,
+    CopierComponent
   ],
 })
 
