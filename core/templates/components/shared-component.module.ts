@@ -173,6 +173,9 @@ import { SmartRouterModule } from 'hybrid-router-module-provider';
 import { StaleTabInfoModalComponent } from './stale-tab-info/stale-tab-info-modal.component';
 import { UnsavedChangesStatusInfoModalComponent } from './unsaved-changes-status-info/unsaved-changes-status-info-modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { CopierComponent } from 'value_generators/templates/copier.component';
+import { RandomSelectorComponent } from 'value_generators/templates/random-selector.component';
+import { ValueGeneratorEditorComponent } from 'pages/exploration-editor-page/param-changes-editor/value-generator-editor.component';
 
 @NgModule({
   imports: [
@@ -337,6 +340,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     OppiaVisualizationFrequencyTableComponent,
     ReviewTestPageComponent,
     VisualizationSortedTilesComponent,
+    CopierComponent,
+    RandomSelectorComponent,
+    ValueGeneratorEditorComponent,
   ],
 
   entryComponents: [
@@ -463,6 +469,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     OppiaVisualizationFrequencyTableComponent,
     ReviewTestPageComponent,
     VisualizationSortedTilesComponent,
+    CopierComponent,
+    RandomSelectorComponent,
+    ValueGeneratorEditorComponent,
   ],
 
   exports: [
@@ -600,6 +609,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     OppiaVisualizationFrequencyTableComponent,
     ReviewTestPageComponent,
     VisualizationSortedTilesComponent,
+    CopierComponent,
+    RandomSelectorComponent,
+    ValueGeneratorEditorComponent,
   ],
 })
 

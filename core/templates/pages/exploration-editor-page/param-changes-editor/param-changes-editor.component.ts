@@ -21,7 +21,7 @@ require(
   'components/forms/custom-forms-directives/select2-dropdown.directive.ts');
 require(
   'pages/exploration-editor-page/param-changes-editor/' +
-  'value-generator-editor.directive.ts');
+  'value-generator-editor.component.ts');
 
 require('domain/exploration/ParamChangeObjectFactory.ts');
 require('domain/utilities/url-interpolation.service.ts');

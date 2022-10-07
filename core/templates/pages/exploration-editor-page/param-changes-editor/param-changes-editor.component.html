@@ -70,9 +70,9 @@
                 required
                 ng-change="onChangeGeneratorType(paramChange)">
         </select>
-        <value-generator-editor generator-id="paramChange.generatorId"
-                                customization-args="paramChange.customizationArgs"
-                                obj-type="'UnicodeString'">
+        <value-generator-editor [generator-id]="paramChange.generatorId"
+                                [customization-args]="paramChange.customizationArgs"
+                                [obj-type]="'UnicodeString'">
         </value-generator-editor>
       </span>
       <button type="button" class="oppia-delete-param-change-button oppia-transition-200"
