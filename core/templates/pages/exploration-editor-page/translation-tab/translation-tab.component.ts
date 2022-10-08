@@ -121,7 +121,12 @@ export class TranslationTabComponent implements OnInit, OnDestroy {
         themeColor: '#212f23',
         }
       ).subscribe(
-        (value) => {},
+        (value) => {
+          // This code make the joyride visible over navbar
+          // by overriding the properties of joyride-step__holder class.
+          document.querySelectorAll<HTMLElement>(
+            '.joyride-step__holder')[0].style.zIndex = '1007';
+        },
         (value) => {},
         () => {
           this.leaveTutorial();
