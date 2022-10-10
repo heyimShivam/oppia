@@ -87,6 +87,11 @@ import { NeedsGuidingResponsesTaskComponent } from './improvements-tab/needs-gui
 import { StatisticsTabComponent } from './statistics-tab/statistics-tab.component';
 import { StateStatsModalComponent } from './statistics-tab/templates/state-stats-modal.component';
 import { PieChartComponent } from './statistics-tab/charts/pie-chart.component';
+import { StateTranslationEditorComponent } from './translation-tab/state-translation-editor/state-translation-editor.component';
+import { AudioTranslationBarComponent } from './translation-tab/audio-translation-bar/audio-translation-bar.component';
+import { StateTranslationComponent } from './translation-tab/state-translation/state-translation.component';
+import { TranslatorOverviewComponent } from './translation-tab/translator-overview/translator-overview.component';
+import { StateTranslationStatusGraphComponent } from './translation-tab/state-translation-status-graph/state-translation-status-graph.component';
 
 @NgModule({
   imports: [
@@ -157,6 +162,11 @@ import { PieChartComponent } from './statistics-tab/charts/pie-chart.component';
     PieChartComponent,
     StateStatsModalComponent,
     StatisticsTabComponent,
+    StateTranslationEditorComponent,
+    AudioTranslationBarComponent,
+    StateTranslationComponent,
+    TranslatorOverviewComponent,
+    StateTranslationStatusGraphComponent
   ],
   entryComponents: [
     CkEditorCopyToolbarComponent,
@@ -209,6 +219,11 @@ import { PieChartComponent } from './statistics-tab/charts/pie-chart.component';
     PieChartComponent,
     StateStatsModalComponent,
     StatisticsTabComponent,
+    StateTranslationEditorComponent,
+    AudioTranslationBarComponent,
+    StateTranslationComponent,
+    TranslatorOverviewComponent,
+    StateTranslationStatusGraphComponent
   ],
   providers: [
     {
