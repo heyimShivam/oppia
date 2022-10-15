@@ -36,13 +36,13 @@ import { RandomSelectorComponent } from 'value_generators/templates/random-selec
   templateUrl: './value-generator-editor.component.html'
 })
 export class ValueGeneratorEditorComponent implements OnChanges, AfterViewInit {
-  @Input() customizationArgs: {
-    list_of_values: string[];
-    } | string;
-
   @Input() generatorId: string;
   @Input() initArgs: string;
   @Input() objType: string;
+  @Input() customizationArgs: {
+    value: string;
+    list_of_values: string[];
+  };
 
   @ViewChild('interactionContainer', {
     read: ViewContainerRef}) viewContainerRef!: ViewContainerRef;

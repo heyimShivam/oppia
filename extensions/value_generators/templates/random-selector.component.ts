@@ -28,6 +28,7 @@ export class RandomSelectorComponent implements OnInit {
   @Input() initArgs: string;
   @Input() objType: string;
   @Input() customizationArgs: {
+    value: string;
     list_of_values: string[];
   };
 

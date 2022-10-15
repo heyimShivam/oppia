@@ -29,6 +29,7 @@ export class CopierComponent {
   @Input() objType: string;
   @Input() customizationArgs: {
     value: string;
+    list_of_values: string[];
   };
 
   getTemplateUrl(): string {
