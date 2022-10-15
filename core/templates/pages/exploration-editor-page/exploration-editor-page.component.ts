@@ -331,7 +331,6 @@ export class ExplorationEditorPageComponent implements OnInit, OnDestroy {
         // changes is invalid, and draft_changes is not `null`.
         this.autosaveInfoModalsService.showVersionMismatchModal(
           this.changeListService.getChangeList());
-        // Shivam PTAL return;
       }
       this.routerService.onRefreshStatisticsTab.emit();
 
