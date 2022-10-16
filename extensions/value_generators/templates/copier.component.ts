@@ -21,7 +21,7 @@ import { downgradeComponent } from '@angular/upgrade/static';
 
 @Component({
   selector: 'copier',
-  templateUrl: './copier.component.html'
+  templateUrl: './Copier.component.html'
 })
 export class CopierComponent {
   @Input() generatorId: string;

@@ -21,7 +21,7 @@ import { downgradeComponent } from '@angular/upgrade/static';
 
 @Component({
   selector: 'random-selector',
-  templateUrl: './random-selector.component.html'
+  templateUrl: './RandomSelector.component.html'
 })
 export class RandomSelectorComponent implements OnInit {
   @Input() generatorId: string;
