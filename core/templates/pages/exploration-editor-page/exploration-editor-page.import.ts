@@ -23,13 +23,11 @@ import 'zone.js';
 import uiValidate from 'angular-ui-validate';
 import 'third-party-imports/guppy.import';
 import 'third-party-imports/midi-js.import';
-import 'third-party-imports/ng-joy-ride.import';
 import 'third-party-imports/skulpt.import';
 import 'third-party-imports/ui-tree.import';
 
 angular.module('oppia', [
-  require('angular-cookies'), 'ngAnimate',
-  'ngJoyRide', 'ngMaterial',
+  require('angular-cookies'), 'ngAnimate', 'ngMaterial',
   'ngSanitize', 'ngTouch', 'pascalprecht.translate',
   'ui.bootstrap', 'ui-leaflet', 'ui.sortable', 'ui.tree', uiValidate,
 ]);
