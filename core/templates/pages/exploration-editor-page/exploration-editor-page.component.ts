@@ -187,7 +187,9 @@ export class ExplorationEditorPageComponent implements OnInit, OnDestroy {
        UserExplorationPermissionsService,
      private userService: UserService,
      private windowDimensionsService: WindowDimensionsService,
-  ) { }
+  ) {
+    alert('shivam');
+  }
 
   setDocumentTitle(): void {
     if (this.explorationTitleService.savedMemento) {

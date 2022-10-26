@@ -16,12 +16,10 @@
  * @fileoverview Module for the exploration editor page.
  */
 
-import { APP_INITIALIZER, NgModule, StaticProvider } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { downgradeComponent } from '@angular/upgrade/static';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { JoyrideModule } from 'ngx-joyride';
@@ -29,8 +27,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedComponentsModule } from 'components/shared-component.module';
 import { CkEditorCopyToolbarComponent } from 'components/ck-editor-helpers/ck-editor-copy-toolbar/ck-editor-copy-toolbar.component';
-import { OppiaAngularRootComponent } from
-  'components/oppia-angular-root.component';
 import { platformFeatureInitFactory, PlatformFeatureService } from
   'services/platform-feature.service';
 import { RequestInterceptor } from 'services/request-interceptor.service';
@@ -101,6 +97,10 @@ import { TranslationTabComponent } from './translation-tab/translation-tab.compo
 import { ValueGeneratorEditorComponent } from './param-changes-editor/value-generator-editor.component';
 import { ParamChangesEditorComponent } from './param-changes-editor/param-changes-editor.component';
 import { ExplorationEditorPageComponent } from './exploration-editor-page.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { toastrConfig, MyHammerConfig } from 'pages/oppia-root/app.module';
+import { OppiaAngularRootComponent } from 'components/oppia-angular-root.component';
 
 @NgModule({
   imports: [
@@ -116,7 +116,7 @@ import { ExplorationEditorPageComponent } from './exploration-editor-page.compon
     MatMenuModule,
     FormsModule,
     MatPaginatorModule,
-    RouterModule.forRoot([]),
+    // RouterModule.forRoot([]),
     JoyrideModule.forRoot(),
     SharedComponentsModule,
     ToastrModule.forRoot(toastrConfig)
@@ -272,33 +272,10 @@ import { ExplorationEditorPageComponent } from './exploration-editor-page.compon
       provide: APP_BASE_HREF,
       useValue: '/'
     }
+  ],
+  bootstrap: [
+    OppiaAngularRootComponent
   ]
 })
-class ExplorationEditorPageModule {
-  // Empty placeholder method to satisfy the `Compiler`.
-  ngDoBootstrap() {}
+export class ExplorationEditorPageModule {
 }
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { downgradeModule } from '@angular/upgrade/static';
-import { ToastrModule } from 'ngx-toastr';
-import { MyHammerConfig, toastrConfig } from 'pages/oppia-root/app.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-const bootstrapFnAsync = async(extraProviders: StaticProvider[]) => {
-  const platformRef = platformBrowserDynamic(extraProviders);
-  return platformRef.bootstrapModule(ExplorationEditorPageModule);
-};
-const downgradedModule = downgradeModule(bootstrapFnAsync);
-
-declare var angular: ng.IAngularStatic;
-
-angular.module('oppia').requires.push(downgradedModule);
-
-angular.module('oppia').directive(
-  // This directive is the downgraded version of the Angular component to
-  // bootstrap the Angular 8.
-  'oppiaAngularRoot',
-  downgradeComponent({
-    component: OppiaAngularRootComponent
-  }) as angular.IDirectiveFactory);

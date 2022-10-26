@@ -1,4 +1,4 @@
-// Copyright 2019 The Oppia Authors. All Rights Reserved.
+// Copyright 2021 The Oppia Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,44 +13,27 @@
 // limitations under the License.
 
 /**
- * @fileoverview Directive scipts for the exploration editor page and the editor
- *               help tab in the navbar.
+ * @fileoverview Directive scripts for the exploration editor pages.
  */
 
-import 'core-js/es7/reflect';
-import 'zone.js';
+import 'pages/common-imports';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppConstants } from 'app.constants';
+import { enableProdMode } from '@angular/core';
+import { ExplorationEditorPageModule } from 'pages/exploration-editor-page/exploration-editor-page.module';
+import { LoggerService } from 'services/contextual/logger.service';
 
-import 'angular-ui-sortable';
-import uiValidate from 'angular-ui-validate';
-import 'third-party-imports/guppy.import';
-import 'third-party-imports/midi-js.import';
-import 'third-party-imports/ng-joy-ride.import';
-import 'third-party-imports/skulpt.import';
-import 'third-party-imports/ui-tree.import';
+if (!AppConstants.DEV_MODE) {
+  enableProdMode();
+}
 
-angular.module('oppia', [
-  require('angular-cookies'), 'ngAnimate',
-  'ngJoyRide', 'ngMaterial',
-  'ngSanitize', 'ngTouch', 'pascalprecht.translate',
-  'ui.bootstrap', 'ui-leaflet', 'ui.sortable', 'ui.tree', uiValidate,
-]);
+const loggerService = new LoggerService();
+platformBrowserDynamic().bootstrapModule(ExplorationEditorPageModule).catch(
+  (err) => loggerService.error(err)
+);
 
-require('Polyfills.ts');
+// This prevents angular pages to cause side effects to hybrid pages.
+// TODO(#13080): Remove window.name statement from import.ts files
+// after migration is complete.
+window.name = '';
 
-// The module needs to be loaded directly after jquery since it defines the
-// main module the elements are attached to.
-require('pages/exploration-editor-page/exploration-editor-page.module.ts');
-require('App.ts');
-require('base-components/oppia-root.directive.ts');
-
-require(
-  'pages/exploration-editor-page/editor-navigation/' +
-  'editor-navbar-breadcrumb.component.ts');
-require(
-  'pages/exploration-editor-page/editor-navigation/' +
-  'editor-navigation.component.ts');
-require(
-  'pages/exploration-editor-page/exploration-save-and-publish-buttons/' +
-  'exploration-save-and-publish-buttons.component.ts');
-require('pages/exploration-editor-page/exploration-editor-page.component.ts');
-require('base-components/base-content.component.ts');

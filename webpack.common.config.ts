@@ -370,7 +370,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunks: ['exploration_editor'],
       filename: 'exploration-editor-page.mainpage.html',
-      hybrid: true,
+      hybrid: false,
       meta: {
         name: defaultMeta.name,
         description: 'Help others learn new things. Create lessons through ' +
