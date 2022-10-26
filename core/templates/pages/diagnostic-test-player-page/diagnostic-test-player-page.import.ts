@@ -19,7 +19,6 @@
 import 'core-js/es7/reflect';
 import 'zone.js';
 
-import 'angular-ui-sortable';
 import 'angular-ui-validate';
 
 angular.module('oppia', [

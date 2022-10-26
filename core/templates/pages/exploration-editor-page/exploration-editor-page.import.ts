@@ -20,7 +20,6 @@
 import 'core-js/es7/reflect';
 import 'zone.js';
 
-import 'angular-ui-sortable';
 import uiValidate from 'angular-ui-validate';
 import 'third-party-imports/guppy.import';
 import 'third-party-imports/midi-js.import';

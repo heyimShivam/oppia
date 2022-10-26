@@ -19,7 +19,6 @@
 import 'core-js/es7/reflect';
 import 'zone.js';
 
-import 'angular-ui-sortable';
 import 'third-party-imports/ui-tree.import';
 import uiValidate from 'angular-ui-validate';
 

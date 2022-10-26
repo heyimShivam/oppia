@@ -19,7 +19,6 @@
 import 'core-js/es7/reflect';
 import 'zone.js';
 
-import 'angular-ui-sortable';
 import uiValidate from 'angular-ui-validate';
 import ngInfiniteScroll from 'ng-infinite-scroll';
 import 'third-party-imports/ui-tree.import';

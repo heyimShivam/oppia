@@ -16,7 +16,6 @@
  * @fileoverview Module used by karma for frontend tests.
  */
 
-import 'angular-ui-sortable';
 import uiValidate from 'angular-ui-validate';
 import 'third-party-imports/ng-joy-ride.import';
 import 'third-party-imports/ui-tree.import';
