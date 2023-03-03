@@ -1,4 +1,4 @@
-<div class="navbar-helper">
+<div class="navbar-helper" ng-if="$ctrl.topic">
   <div class="navbar-tabs">
     <div class="navbar-text">
       {{ getNavbarText() }}
@@ -73,7 +73,7 @@
     </div>
   </div>
 </div>
-<div class="topic-editor-main">
+<div class="topic-editor-main" *ngIf="topic">
   <div *ngIf="getActiveTabName() === 'main' && getEntityType() === 'topic'">
     <oppia-topic-editor-tab></oppia-topic-editor-tab>
   </div>
