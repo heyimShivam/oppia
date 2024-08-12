@@ -106,8 +106,6 @@ module.exports = {
       commonPrefix +
       '/pages/topics-and-skills-dashboard-page/' +
       'topics-and-skills-dashboard-page.import.ts',
-    topic_viewer:
-      commonPrefix + '/pages/topic-viewer-page/topic-viewer-page.import.ts',
   },
 
   /**
@@ -339,14 +337,14 @@ module.exports = {
       inject: false,
     }),
     new HtmlWebpackPlugin({
-      chunks: ['topic_viewer'],
-      filename: 'topic-viewer-page.mainpage.html',
+      chunks: ['facilitator_dashboard'],
+      filename: 'facilitator-dashboard-page.mainpage.html',
       hybrid: true,
       meta: defaultMeta,
       template:
         commonPrefix +
-        '/pages/topic-viewer-page/' +
-        'topic-viewer-page.mainpage.html',
+        '/pages/facilitator-dashboard-page/' +
+        'facilitator-dashboard-page.mainpage.html',
       minify: htmlMinifyConfig,
       inject: false,
     }),
