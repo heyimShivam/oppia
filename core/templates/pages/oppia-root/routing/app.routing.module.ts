@@ -193,6 +193,14 @@ const routes: Route[] = [
       ),
   },
   {
+    path: AppConstants.PAGES_REGISTERED_WITH_FRONTEND.TOPIC_VIEWER.ROUTE,
+    loadChildren: () =>
+      import('pages/topic-viewer-page/topic-viewer-page.module').then(
+        m => m.TopicViewerPageModule
+      ),
+    canActivate: [IsLoggedInGuard],
+  },
+  {
     path: AppConstants.PAGES_REGISTERED_WITH_FRONTEND.DELETE_ACCOUNT.ROUTE,
     pathMatch: 'full',
     loadChildren: () =>
@@ -414,22 +422,6 @@ const routes: Route[] = [
     loadChildren: () =>
       import('pages/blog-post-page/blog-post-page.module').then(
         m => m.BlogPostPageModule
-      ),
-  },
-  {
-    path: AppConstants.PAGES_REGISTERED_WITH_FRONTEND.VOICEOVER_ADMIN.ROUTE,
-    loadChildren: () =>
-      import('pages/voiceover-admin-page/voiceover-admin-page.module').then(
-        m => m.VoiceoverAdminPageModule
-      ),
-    canActivate: [IsLoggedInGuard],
-  },
-  {
-    path: AppConstants.PAGES_REGISTERED_WITH_FRONTEND.COLLECTION_PLAYER.ROUTE,
-    pathMatch: 'full',
-    loadChildren: () =>
-      import('pages/collection-player-page/collection-player-page.module').then(
-        m => m.CollectionPlayerPageModule
       ),
   },
 ];

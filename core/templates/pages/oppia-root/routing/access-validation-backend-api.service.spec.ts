@@ -256,15 +256,17 @@ describe('Access validation backend api service', () => {
     expect(failSpy).toHaveBeenCalled();
   }));
 
-  it('should validate access to collection editor page', fakeAsync(() => {
-    let collectionId = 'collection_id';
+  it('should validate access to topic viewer page', fakeAsync(() => {
+    let classroomUrlFragment = 'test_class_url';
+    let topicUrlFragment = 'test_topic_url';
+
     avbas
-      .validateAccessCollectionEditorPage(collectionId)
+      .validateAccessToTopicViewerPage(classroomUrlFragment, topicUrlFragment)
       .then(successSpy, failSpy);
 
     const req = httpTestingController.expectOne(
-      '/access_validation_handler/' +
-        'can_access_collection_editor_page/collection_id'
+      '/access_validation_handler/can_access_topic_viewer_page/' +
+        'test_class_url/test_topic_url'
     );
     expect(req.request.method).toEqual('GET');
     req.flush({});
