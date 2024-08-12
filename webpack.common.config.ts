@@ -336,18 +336,6 @@ module.exports = {
       minify: htmlMinifyConfig,
       inject: false,
     }),
-    new HtmlWebpackPlugin({
-      chunks: ['facilitator_dashboard'],
-      filename: 'facilitator-dashboard-page.mainpage.html',
-      hybrid: true,
-      meta: defaultMeta,
-      template:
-        commonPrefix +
-        '/pages/facilitator-dashboard-page/' +
-        'facilitator-dashboard-page.mainpage.html',
-      minify: htmlMinifyConfig,
-      inject: false,
-    }),
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['**/*', '!*.html'],
     }),

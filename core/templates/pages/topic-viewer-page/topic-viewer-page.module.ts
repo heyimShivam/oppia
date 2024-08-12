@@ -20,7 +20,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedComponentsModule} from 'components/shared-component.module';
-import {RequestInterceptor} from 'services/request-interceptor.service';
 import {
   TopicViewerNavbarBreadcrumbComponent,
   // eslint-disable-next-line max-len
@@ -46,13 +45,6 @@ import {TopicPlayerViewerCommonModule} from 'pages/topic-viewer-page/topic-viewe
         canActivate: [TopicViewerAccessGuard],
       },
     ]),
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true,
-    },
   ],
   declarations: [
     TopicViewerPageRootComponent,
